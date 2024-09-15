@@ -11,14 +11,39 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Principal: ");
-        float principal = scanner.nextFloat();
+        float principal;
+        float annualInterest;
+        byte period;
 
-        System.out.print("Annual interest: ");
-        float annualInterest = scanner.nextFloat();
+        while (true) {
+            System.out.print("Principal: ");
+            principal = scanner.nextFloat();
 
-        System.out.print("Period (Y): ");
-        byte period = scanner.nextByte();
+            if (principal >= 1_000 && principal <= 1_000_000) {
+                break;
+            }
+            System.out.println("Enter a value between $1K and $1M");
+        }
+
+        while (true){
+            System.out.print("Annual interest: ");
+            annualInterest = scanner.nextFloat();
+
+            if (annualInterest > 0 && annualInterest <= 30) {
+                break;
+            }
+            System.out.println("Enter a value greater than 0 and less than or equal to 30");
+        }
+
+        while (true) {
+            System.out.print("Period (Y): ");
+            period = scanner.nextByte();
+
+            if (period > 0 && period <= 30) {
+                break;
+            }
+            System.out.println("Enter a value between 1 and 30");
+        }
 
         // calculation
         float monthlyInterestRate = annualInterest / (MONTHS_IN_YEAR * PRESENT);
